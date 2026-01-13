@@ -1,0 +1,12 @@
+torch
+transformers
+datasets==3.1.0
+accelerate
+peft
+bitsandbytes
+rouge-score
+nltk
+pandas
+matplotlib
+seaborn
+tqdm

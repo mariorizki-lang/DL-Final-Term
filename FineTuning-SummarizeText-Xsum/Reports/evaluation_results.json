@@ -1,0 +1,110 @@
+{
+  "rouge_scores": {
+    "fine_tuned_model": {
+      "ROUGE-1": {
+        "score": 0.0167,
+        "percentage": "1.7%",
+        "description": "Unigram overlap with reference"
+      },
+      "ROUGE-2": {
+        "score": 0.0026,
+        "percentage": "0.3%",
+        "description": "Bigram overlap with reference"
+      },
+      "ROUGE-L": {
+        "score": 0.0107,
+        "percentage": "1.1%",
+        "description": "Longest common subsequence"
+      }
+    },
+    "baseline_zero_shot": {
+      "ROUGE-1": {
+        "score": 0.0138,
+        "percentage": "1.4%"
+      },
+      "ROUGE-2": {
+        "score": 0.0019,
+        "percentage": "0.2%"
+      },
+      "ROUGE-L": {
+        "score": 0.0082,
+        "percentage": "0.8%"
+      }
+    },
+    "state_of_the_art": {
+      "ROUGE-1": {
+        "score_range": "0.45-0.47",
+        "percentage_range": "45-47%"
+      },
+      "ROUGE-2": {
+        "score_range": "0.22-0.25",
+        "percentage_range": "22-25%"
+      },
+      "ROUGE-L": {
+        "score_range": "0.37-0.40",
+        "percentage_range": "37-40%"
+      }
+    }
+  },
+  "performance_comparison": {
+    "improvement_vs_baseline": {
+      "ROUGE-1": {
+        "absolute_gain": 0.0029,
+        "relative_improvement": "21.0%"
+      },
+      "ROUGE-2": {
+        "absolute_gain": 0.0007,
+        "relative_improvement": "33.7%"
+      },
+      "ROUGE-L": {
+        "absolute_gain": 0.0025,
+        "relative_improvement": "30.7%"
+      }
+    },
+    "gap_to_sota": {
+      "ROUGE-1": "27x lower",
+      "ROUGE-2": "88x lower",
+      "ROUGE-L": "35x lower"
+    }
+  },
+  "generation_statistics": {
+    "total_samples_evaluated": 500,
+    "successful_generations": 49,
+    "failed_generations": 451,
+    "success_rate": 9.8,
+    "failure_rate": 90.2,
+    "primary_failure_reason": "max_length configuration error",
+    "error_message": "Input length of input_ids is X, but max_length is set to 150"
+  },
+  "qualitative_analysis": {
+    "best_example": {
+      "rouge_l_score": 0.2564,
+      "article_preview": "The car mounted a pavement within the grounds of Maidstone Hospital...",
+      "reference_summary": "A woman in her 90s who was in a wheelchair when she was hit by a car outside a hospital has died.",
+      "generated_summary": "Bellusci, 27, spent the 2016-17 season with Empoli in Italys Serie A...",
+      "observation": "Model confusion between multiple articles - generated summary doesn't match input"
+    },
+    "common_patterns": {
+      "extractive_behavior": "Model tends to copy-paste portions of input article",
+      "length_inconsistency": "Generated summaries highly variable in length",
+      "lack_of_abstractiveness": "Minimal paraphrasing or information synthesis",
+      "occasional_relevance": "Some examples show minimal understanding"
+    }
+  },
+  "token_statistics": {
+    "average_sequence_length": 484,
+    "median_sequence_length": 424,
+    "p95_sequence_length": 1070,
+    "p99_sequence_length": 1126,
+    "truncation_rate": "4.3%",
+    "average_summary_length_reference": 26,
+    "average_summary_length_generated": "Variable (for successful generations)"
+  },
+  "evaluation_metadata": {
+    "evaluation_date": "2026-01-11",
+    "model_checkpoint": "phi2-xsum-lora (3 epochs)",
+    "evaluation_split": "validation subset (500 samples)",
+    "rouge_library": "rouge-score",
+    "stemmer_used": true
+  }
+}
